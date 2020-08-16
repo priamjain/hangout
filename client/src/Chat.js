@@ -2,6 +2,8 @@ import React,{useState,useEffect} from 'react'
 import queryString from 'query-string'
 import io from 'socket.io-client'
 import Message from './Message'
+import './Chat.css'
+import FormControl from 'react-bootstrap/FormControl'
 let socket;
 
 function Chat({location}) {
@@ -11,12 +13,12 @@ function Chat({location}) {
 	const [message, setMessage] = useState('')
 	const ENDPOINT = 'localhost:5000'
 	useEffect(() => {
-		const {name1,party1} = queryString.parse(location.search);
+		const {name,party} = queryString.parse(location.search);
 
 		socket=io(ENDPOINT);
 
-		setName(name1);
-		setParty(party1);
+		setName(name);
+		setParty(party);
 		
 		socket.emit('join',{name,party},()=>{});
 
@@ -42,16 +44,16 @@ function Chat({location}) {
 	let msgcom = messages.map((msg,index) => <Message key={index} user={msg.user} text={msg.text}/>);
 
 	return (
-		<div>
-			<div>
+			<div className='w-100 chat p-4'>
+				
 				{msgcom}
-				<input 
+				<FormControl 
+					className='w-100'
 					type="text"
 					value={message}
 					onChange={(e)=>setMessage(e.target.value)}
 					onKeyPress={e=>e.key==='Enter'?sendMessage(e):null}/>
 			</div>
-		</div>
 	)
 }
 

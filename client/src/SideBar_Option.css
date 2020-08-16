@@ -1,6 +1,4 @@
 .sidebarOption{
-	display: flex;
-	align-items: center;
 	cursor: pointer;
 }
 .sidebarOption:hover {
@@ -9,17 +7,6 @@
 	color: var(--hangout-color);
 	transition: color 100ms ease-out;
 }
-.sidebarOption > h2{
-	font-weight: 800;
-	font-size: 20px;
-	margin-right: 20px;
-	padding: 0;
-	margin:0;
-}
-.sidebarOption > svg{
-	padding: 20px;
-}
-
 .sidebarOption--active{
 	color: var(--hangout-color);
 }

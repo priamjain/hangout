@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import SideBar from './SideBar'
-import Hangout from './Hangout'
+import Join from './Join'
 import Chat from './Chat'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 function App() {
@@ -11,7 +12,7 @@ function App() {
         <SideBar></SideBar>
       {/*Page According to SideBar*/}
       <Router>
-        <Route path="/" exact component={Hangout}/>
+        <Route path="/" exact component={Join}/>
         <Route path="/chat" exact component={Chat}/>
       </Router>
     </div>

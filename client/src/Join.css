@@ -1,0 +1,5 @@
+.join{
+	/*width:1000px;*/
+	background-color: var(--hangout-background);
+	border-radius: 30px;
+}
