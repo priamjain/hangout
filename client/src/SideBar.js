@@ -15,7 +15,7 @@ function SideBar() {
 			</SideBarOption>
 			<SideBarOption 
 				text="Option"
-				Icon={<FontAwesomeIcon icon={faEnvelope}></FontAwesomeIcon>} >
+				Icon={<FontAwesomeIcon icon={faBell}></FontAwesomeIcon>} >
 			</SideBarOption>
 		</div>
 	)

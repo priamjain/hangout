@@ -12,6 +12,12 @@ app.use(router);
 
 io.on('connection',(socket)=>{
 	console.log("new connection");
+
+	socket.on('join',({name,party},callback)=>{
+		console.log(name,party);
+		
+	})
+
 	socket.on('disconnect',()=>console.log('user left'));
 })
 
