@@ -1,4 +1,5 @@
-.chat{
+.container{
+	min-width:400px;
 	background-color: var(--hangout-background);
 	border-radius: 30px;
 }

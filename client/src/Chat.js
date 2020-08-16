@@ -44,9 +44,10 @@ function Chat({location}) {
 	let msgcom = messages.map((msg,index) => <Message key={index} user={msg.user} text={msg.text}/>);
 
 	return (
-			<div className='w-100 chat p-4'>
-				
+			<div className='container'>
+				<div>
 				{msgcom}
+				</div>
 				<FormControl 
 					className='w-100'
 					type="text"

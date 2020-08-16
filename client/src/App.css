@@ -1,8 +1,9 @@
 body{
-  --hangout-background:#edf7f6;
-  --hangout-color:#8076a3;
+  --hangout-background:#2d545e;
+  --hangout-color:#e1b382;
 }
 .app{
   display: flex;
   height: 100vh;
+  background-color:var(--hangout-color); 
 }
