@@ -45,6 +45,7 @@ function Chat({location}) {
 
 	return (
 			<div className='container'>
+				<h1>{`Name: ${name} Party: ${party}`}</h1>
 				<div>
 				{msgcom}
 				</div>
