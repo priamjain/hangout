@@ -1,22 +1,22 @@
 import React,{useState,useEffect} from 'react'
 import queryString from 'query-string'
 import io from 'socket.io-client'
-
+import Message from './Message'
 let socket;
 
 function Chat({location}) {
-		const [name, setName] = useState('');
-		const [party, setParty] = useState('');
-		const [messages, setMessages] = useState([]);
-		const [message, setMessage] = useState('')
-		const ENDPOINT = 'localhost:5000'
+	const [name, setName] = useState('');
+	const [party, setParty] = useState('');
+	const [messages, setMessages] = useState([]);
+	const [message, setMessage] = useState('')
+	const ENDPOINT = 'localhost:5000'
 	useEffect(() => {
-		const {name,party} = queryString.parse(location.search);
+		const {name1,party1} = queryString.parse(location.search);
 
 		socket=io(ENDPOINT);
 
-		setName(name);
-		setParty(party);
+		setName(name1);
+		setParty(party1);
 		
 		socket.emit('join',{name,party},()=>{});
 
@@ -39,7 +39,7 @@ function Chat({location}) {
 		}
 	}
 
-	let msgcom = messages.map(msg=>msg.text);
+	let msgcom = messages.map((msg,index) => <Message key={index} user={msg.user} text={msg.text}/>);
 
 	return (
 		<div>

@@ -21,8 +21,6 @@ io.on('connect', (socket) => {
     socket.emit('message', { user: 'admin', text: `${user.name}, welcome to party ${user.party}.`});
     socket.broadcast.to(user.party).emit('message', { user: 'admin', text: `${user.name} has joined!` });
 
-    io.to(user.party).emit('partyData', { party: user.party, users: getUsersInParty(user.party) });
-
     callback();
   });
 
