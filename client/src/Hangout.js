@@ -1,10 +1,10 @@
 import React from 'react'
-import Friend from './Friend'
+import Party from './Party'
 import './Hangout.css'
 function Hangout() {
 	return (
 		<div>
-			<Friend></Friend>
+			<Party></Party>
 		</div>
 	)
 }
