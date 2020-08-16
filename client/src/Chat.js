@@ -11,7 +11,7 @@ function Chat({location}) {
 	const [party, setParty] = useState('');
 	const [messages, setMessages] = useState([]);
 	const [message, setMessage] = useState('')
-	const ENDPOINT = 'localhost:5000'
+	const ENDPOINT = 'https://hangout-backend.herokuapp.com/'
 	useEffect(() => {
 		const {name,party} = queryString.parse(location.search);
 
