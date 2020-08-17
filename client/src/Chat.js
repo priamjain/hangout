@@ -18,7 +18,7 @@ class Chat extends React.Component{
 		}
 	}
 
-	socket = io('localhost:5000');
+	socket = io('https://hangout-backend.herokuapp.com');
 
 
 	componentDidMount = ()=> {
