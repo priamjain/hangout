@@ -12,6 +12,7 @@
 	min-height: 700px;
 }
 .chat__messages{
+	margin-left: 20px;
 	height: 100%;
 	width: 100%;
 	overflow-y: scroll;

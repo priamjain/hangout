@@ -19,7 +19,7 @@ function Join() {
 				<Form.Group as={Row} controlId="party" className=''>
 					<Form.Control className='join__input' type="text" placeholder="Enter Party Name" value={party} onChange={(e)=>setParty(e.target.value)}/>
 				</Form.Group>
-				<Link to={`/chat?name=${name}&party=${party}`}>
+				<Link onClick={(e)=>!name||!party?e.preventDefault():null} to={`/chat?name=${name}&party=${party}`}>
 					<Button className='w-100 join__button' variant="primary" type="submit">
 						    	Join
 					</Button>
