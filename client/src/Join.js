@@ -24,6 +24,7 @@ function Join() {
 						    	Join
 					</Button>
 				</Link>
+				<a href={`https://api.napster.com/oauth/authorize?client_id=Y2IwMzgyMDMtMDYyZS00ZThjLWI5ODgtZTlmNjAzNDNlYmQ0&redirect_uri=http://localhost:3000/chat?state={name=${name},party=${party}}&response_type=code`}>click</a>
 				</div>
 			</Form>
 	)
