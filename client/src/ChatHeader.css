@@ -1,0 +1,12 @@
+.chatheader{
+	margin:0;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	justify-content: space-around;
+	color: #f1f1f1;
+	font-size: 32px;
+	font-weight: 800;
+	text-decoration: underline;
+	text-transform: uppercase;
+}

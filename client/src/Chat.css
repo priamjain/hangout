@@ -1,5 +1,18 @@
-.container{
+.chat__container{
+	margin:auto;
+	width: 50%;
+	height: 75%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
 	min-width:400px;
 	background-color: var(--hangout-background);
 	border-radius: 30px;
+	min-height: 700px;
+}
+.chat__messages{
+	height: 100%;
+	width: 100%;
+	overflow-y: scroll;
 }

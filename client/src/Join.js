@@ -8,7 +8,7 @@ function Join() {
 	const [party, setParty] = useState('');
 	const [name, setName] = useState('')
 	return (
-			<Form className='container'>
+			<Form className='join__container'>
 				<h1 className='join__brand'>
 					Hangout
 				</h1>

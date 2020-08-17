@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="app">
     <Router>
-        <Route path="/"> <Redirect to="/join" /></Route>
+        {/*<Route path="/"> <Redirect to="/join" /></Route>*/}
         <Route path="/join" component={Join}/>
         <Route path="/chat" exact component={Chat}/>
       </Router>

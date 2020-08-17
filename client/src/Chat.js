@@ -1,62 +1,78 @@
-import React,{useState,useEffect} from 'react'
+import React from 'react'
 import queryString from 'query-string'
 import io from 'socket.io-client'
 import Message from './Message'
 import './Chat.css'
+import ChatHeader from './ChatHeader'
 import FormControl from 'react-bootstrap/FormControl'
-let socket;
+class Chat extends React.Component{
+	constructor(props) {
+		super(props)
 
-function Chat({location}) {
-	const [name, setName] = useState('');
-	const [party, setParty] = useState('');
-	const [messages, setMessages] = useState([]);
-	const [message, setMessage] = useState('')
-	const ENDPOINT = 'https://hangout-backend.herokuapp.com/'
-	useEffect(() => {
-		const {name,party} = queryString.parse(location.search);
-
-		socket=io(ENDPOINT);
-
-		setName(name);
-		setParty(party);
-		
-		socket.emit('join',{name,party},()=>{});
-
-		return() =>{
-			socket.emit('disconnect');
-			socket.off();
-		}
-	},[ENDPOINT,location.search])
-
-	useEffect(() => {
-		socket.on('message',(message)=>{
-			setMessages([...messages,message]);
-		})
-	}, [messages])
-
-	const sendMessage = (e) =>{
-		e.preventDefault();
-		if(message){
-			socket.emit('sendMessage',message,()=>setMessage(''));
+		const {name,party} = queryString.parse(this.props.location.search);
+		this.state = {
+			name: name,
+			party: party,
+			message: "",
+			messages: []
 		}
 	}
+	socket = io('localhost:5000');
 
-	let msgcom = messages.map((msg,index) => <Message key={index} user={msg.user} text={msg.text}/>);
 
-	return (
-			<div className='container'>
-				<h1>{`Name: ${name} Party: ${party}`}</h1>
-				<div>
-				{msgcom}
+	componentDidMount = ()=> {
+		this.socket.emit('join',{name:this.state.name,party:this.state.party},()=>{});
+		this.socket.on('message',(message)=>{
+			this.setState(prev=>{
+				return({messages:[...prev.messages,message]});
+			});
+			
+		})
+	}
+
+		componentWillUnmount(){
+			this.socket.emit('disconnect');
+			this.socket.off();
+		}
+
+		sendMessage = (e) =>{
+			e.preventDefault();
+			if(this.state.message){
+				this.socket.emit('sendMessage',this.state.message,()=>{});
+			}
+			this.setState({message:""});
+		}	
+		
+		render(){
+			return (
+				<div className='chat__container'>
+				<ChatHeader party={this.state.party} name={this.state.name}></ChatHeader>
+				<div className="chat__messages">
+				{this.state.messages.map((msg,index) => <Message key={index} user={msg.user} text={msg.text}/>)}
 				</div>
 				<FormControl 
-					className='w-100'
-					type="text"
-					value={message}
-					onChange={(e)=>setMessage(e.target.value)}
-					onKeyPress={e=>e.key==='Enter'?sendMessage(e):null}/>
-			</div>
-	)
-}
+				className='w-100'
+				type="text"
+				value={this.state.message}
+				onChange={(e)=>this.setState({message:e.target.value})}
+				onKeyPress={e=>e.key==='Enter'?this.sendMessage(e):null}/>
+				</div>
+				)
+		}
 
-export default Chat
+	}
+	export default Chat
+
+
+	// constructor(props) {
+	// 	super(props)
+
+
+	// 	
+	// }
+
+
+
+
+
+	// 	
