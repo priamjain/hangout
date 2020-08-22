@@ -5,7 +5,6 @@ import Message from './Message'
 import './Chat.css'
 import ChatHeader from './ChatHeader'
 import FormControl from 'react-bootstrap/FormControl'
-import MusicPlayer from './MusicPlayer'
 class Chat extends React.Component{
 	constructor(props) {
 		super(props)

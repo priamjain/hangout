@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import Row from 'react-bootstrap/Row'
-function Join() {
+function Join({token}) {
 	const [party, setParty] = useState('');
 	const [name, setName] = useState('')
 	return (
@@ -24,7 +24,6 @@ function Join() {
 						    	Join
 					</Button>
 				</Link>
-				<a href={`https://api.napster.com/oauth/authorize?client_id=Y2IwMzgyMDMtMDYyZS00ZThjLWI5ODgtZTlmNjAzNDNlYmQ0&redirect_uri=http://localhost:3000/chat?state={name=${name},party=${party}}&response_type=code`}>click</a>
 				</div>
 			</Form>
 	)
