@@ -2,7 +2,7 @@ import React from 'react';
 import Player from './Player';
 import GenreCalls from '../Models/GenreCalls';
 import TrackCalls from '../Models/TrackCalls';
-
+import SearchCalls from '../Models/SearchCalls'
 let Napster;
 
 export default class Genre extends React.Component {
@@ -27,6 +27,7 @@ export default class Genre extends React.Component {
   }
 
   componentDidMount() {
+    this.loadSearch(this.props.token, 'perfect')
     this.loadGenres(this.props.token);
     Napster = window.Napster;
     Napster.player.on('playsessionexpired', () => {
@@ -61,6 +62,7 @@ export default class Genre extends React.Component {
     });
   }
 
+
   loadGenres(token) {
     return GenreCalls.getGenres(token)
       .then(genres => {
@@ -69,6 +71,16 @@ export default class Genre extends React.Component {
         }
       })
       .catch(err => Error(err, "Loading Genres"));
+  }
+
+  loadSearch(token,query){
+    return SearchCalls.getSearch(token,query)
+    .then(search =>search.data.tracks)
+    .then(tracks=>{
+      if(this.state.tracks!==tracks){
+        this.setState({tracks})
+      }
+    })
   }
 
   chooseTrackList(token, genre) {
@@ -190,12 +202,12 @@ export default class Genre extends React.Component {
           )}
           {!this.state.isShowing && (<div align="center" id="track">{trackList}</div>)}
         </div>
-        <div id="wide">
+{/*        <div id="wide">
           <h1 className="header">WELCOME</h1>
           <h2 className="message">Select any genre to start listening!</h2>
           <br />
           <ul>{genreList}</ul>
-        </div>
+        </div>*/}
       </div>
     );
   }

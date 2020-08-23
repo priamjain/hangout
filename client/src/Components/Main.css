@@ -1,0 +1,11 @@
+.main_music{
+	flex: 0.2;
+	overflow-y: scroll;
+}
+.main{
+	display: flex;
+	flex-direction: row;
+}
+.main_chat{
+	flex: 0.8;
+}
