@@ -1,15 +1,16 @@
 import React from 'react'
 import SearchCalls from '../Models/SearchCalls'
+import MusicSelect from './MusicSelect'
 let Napster;
 export class MusicScreen extends React.Component {
 	constructor(props) {
 		super(props)
-	
+
 		this.state = {
 
-			 token:props.token,
-			 tracks:[],
-			 currentTrack:{}
+			token:props.token,
+			tracks:[],
+			currentTrack:{}
 		}
 	}
 	componentDidMount(){
@@ -29,23 +30,23 @@ export class MusicScreen extends React.Component {
 	}
 	
 	render() {
-		console.log(this.state.currentTrack);
-		console.log(this.state.tracks);
+		const player = 	<div className='music__select'>
+							<img className="album__img"src={`https://api.napster.com/imageserver/v2/albums/${this.state.currentTrack.albumId}/images/500x500.jpg`} alt="album art"/>
+							<h3>{this.state.currentTrack.name}</h3>
+							<p>{this.state.currentTrack.artistName}</p>
+						</div>
 
 		return (
 			<React.Fragment>
-				<div>
-				<input type="text" name="query" value={this.state.query} onChange={(e)=>this.setState({query:e.target.value})}/>
-				<button onClick={this.onSearch}>Search</button>
-				</div>
-				<div>
-					<p>Player</p>
-					<img src={`https://api.napster.com/imageserver/v2/albums/${this.state.currentTrack.albumId}/images/500x500.jpg`} alt="album art"/>
-					<p>currentTrack: {this.state.currentTrack.type==='track'?this.state.currentTrack.name:'no track slected'}</p>
-				</div>
-				{this.state.tracks.map(track=><p key={track.id} onClick={()=>{this.clickHandle(track)}}>{`${track.name} by ${track.artistName}`}</p>)}			
+			<div>
+			<input type="text" name="query" value={this.state.query} onChange={(e)=>this.setState({query:e.target.value})}/>
+			<button onClick={this.onSearch}>Search</button>
+			</div>
+			{this.state.currentTrack.type==='track'?player:null}
+
+			{this.state.tracks.map(track=><MusicSelect key={track.id} track={track} clickHandle={this.clickHandle}>{`${track.name} by ${track.artistName}`}</MusicSelect>)}			
 			</React.Fragment>
-		)
+			)
 	}
 }
 

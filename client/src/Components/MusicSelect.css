@@ -1,0 +1,9 @@
+.music__select{
+	display: flex;
+	margin: 10px;
+}
+
+.album__img{
+	width: 100px;
+	height: 100px;
+}
