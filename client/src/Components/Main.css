@@ -1,6 +1,8 @@
 .main_music{
+	width:100%;
 	flex: 0.2;
 	overflow-y: scroll;
+	overflow-x: hidden;
 }
 .main{
 	display: flex;

@@ -1,6 +1,6 @@
 import React from 'react'
 import Chat from './Chat'
-import Music from './Music'
+import MusicScreen from './MusicScreen'
 import './Main.css'
 import {useLocation} from 'react-router-dom'
 const Main = ({token}) => {
@@ -8,10 +8,10 @@ const Main = ({token}) => {
 	return (
 		<div className="main w-100">
 		<div className="main_chat mt-5">
-		    <Chat location={location}></Chat>
+		<Chat location={location}></Chat>
 		</div>
 		<div className='main_music w-100'>
-			<Music token={token}></Music>
+		<MusicScreen token={token}></MusicScreen>
 		</div>
 		</div>
 		)

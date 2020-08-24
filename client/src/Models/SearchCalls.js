@@ -1,7 +1,7 @@
 const SearchCalls = {};
 
 SearchCalls.getSearch = function getSearch(access_token,query) {
-  const url = `https://api.napster.com/v2.2/search?lang=en_US&query=${query}`;
+  const url = `https://api.napster.com/v2.2/search?lang=en_US&query=${query}&isStreamableOnly=true`;
   return fetch(url, {
     method: 'GET',
     headers: {
