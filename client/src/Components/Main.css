@@ -2,7 +2,7 @@
 	width:100%;
 	flex: 0.2;
 	overflow-y: scroll;
-	overflow-x: hidden;
+	overflow-x: visible;
 }
 .main{
 	display: flex;
