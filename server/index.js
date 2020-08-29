@@ -33,6 +33,13 @@ io.on('connect', (socket) => {
     callback();
   });
 
+  socket.on('setCurrentTrackId', (message) => {
+    const user = getUser(socket.id);
+
+    socket.broadcast.to(user.party).emit('currentTrackId', messae);
+
+  });
+
   socket.on('disconnect', () => {
     const user = removeUser(socket.id);
 

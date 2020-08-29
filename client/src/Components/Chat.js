@@ -21,7 +21,13 @@ class Chat extends React.Component{
 	socket = io('https://hangout-backend.herokuapp.com');
 
 
-	componentDidMount = ()=> {
+	componentDidUpdate(prevprops){
+		if(prevprops.currentTrackId!=this.props.currentTrackId){
+			this.socket.emit('setCurrentTrackId',this.props.currentTrackId);
+		}
+	}
+
+	componentDidMount(){
 		this.socket.emit('join',{name:this.state.name,party:this.state.party},()=>{});
 		this.socket.on('message',(message)=>{
 			console.log('msg');
@@ -29,6 +35,10 @@ class Chat extends React.Component{
 				console.log('setmessage');
 				return({messages:[...prev.messages,message]});
 			});
+			
+		})
+		this.socket.on('currentTrackId',(message)=>{
+			this.props.setCurrentTrackId(message);
 			
 		})
 	}

@@ -25,7 +25,9 @@ export class MusicScreen extends React.Component {
 	} 
 
 	clickHandle = (track) =>{
-		this.setState({currentTrack:track})
+		this.setState({currentTrack:track},()=>{
+			this.props.setCurrentTrackId(this.state.currentTrack.id);
+		})
 		Napster.player.play(track.id.toLowerCase());
 	}
 	
