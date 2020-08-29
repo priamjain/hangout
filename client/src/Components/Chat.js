@@ -22,7 +22,7 @@ class Chat extends React.Component{
 
 
 	componentDidUpdate(prevprops){
-		if(prevprops.currentTrackId!=this.props.currentTrackId){
+		if(prevprops.currentTrackId!==this.props.currentTrackId){
 			this.socket.emit('setCurrentTrackId',this.props.currentTrackId);
 		}
 	}

@@ -7,7 +7,7 @@ export class MusicScreen extends React.Component {
 		super(props)
 
 		this.state = {
-
+			query:"",
 			token:props.token,
 			tracks:[],
 			currentTrack:{}
