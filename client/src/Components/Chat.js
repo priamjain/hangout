@@ -20,13 +20,6 @@ class Chat extends React.Component{
 
 	socket = io('https://hangout-backend.herokuapp.com');
 
-
-	componentDidUpdate(prevprops){
-		if(prevprops.currentTrackId!==this.props.currentTrackId){
-			this.socket.emit('setCurrentTrackId',this.props.currentTrackId);
-		}
-	}
-
 	componentDidMount(){
 		this.socket.emit('join',{name:this.state.name,party:this.state.party},()=>{});
 		this.socket.on('message',(message)=>{

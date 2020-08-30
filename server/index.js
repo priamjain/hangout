@@ -6,21 +6,11 @@ const app = express();
 const cors = require('cors');
 
 const server = http.createServer(app);
-const io = socketio(server, {
-    handlePreflightRequest: (req, res) => {
-        const headers = {
-            "Access-Control-Allow-Headers": "Content-Type, Authorization",
-            "Access-Control-Allow-Origin": "https://hangout.netlify.app",
-            "Access-Control-Allow-Credentials": true
-        };
-        res.writeHead(200, headers);
-        res.end();
-    }
-});
+const io = socketio(server};
 const port  = process.env.PORT || 5000;
 const router  = require('./router');
 app.use(router);
-// app.use(cors());
+app.use(cors());
 io.on('connect', (socket) => {
   socket.on('join', ({ name, party }, callback) => {
     const { error, user } = addUser({ id: socket.id, name, party });
@@ -41,13 +31,6 @@ io.on('connect', (socket) => {
     io.to(user.party).emit('message', { user: user.name, text: message });
 
     callback();
-  });
-
-  socket.on('setCurrentTrackId', (message) => {
-    const user = getUser(socket.id);
-
-    socket.broadcast.to(user.party).emit('currentTrackId', messae);
-
   });
 
   socket.on('disconnect', () => {
