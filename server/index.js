@@ -11,6 +11,7 @@ const port  = process.env.PORT || 5000;
 const router  = require('./router');
 app.use(router);
 app.use(cors());
+io.set('origins', '*:*');
 io.on('connect', (socket) => {
   socket.on('join', ({ name, party }, callback) => {
     const { error, user } = addUser({ id: socket.id, name, party });
