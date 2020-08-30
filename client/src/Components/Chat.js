@@ -8,7 +8,6 @@ import FormControl from 'react-bootstrap/FormControl'
 class Chat extends React.Component{
 	constructor(props) {
 		super(props)
-
 		const {name,party} = queryString.parse(this.props.location.search);
 		this.state = {
 			name: name,
@@ -17,7 +16,6 @@ class Chat extends React.Component{
 			messages: []
 		}
 	}
-
 	socket = io('https://hangout-backend.herokuapp.com');
 
 	componentDidMount(){
