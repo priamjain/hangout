@@ -55,7 +55,7 @@ class Chat extends React.Component{
 			{this.state.messages.map((msg,index) => <Message key={index} user={msg.user} text={msg.text}/>)}
 			</div>
 			<FormControl 
-			className='w-100'
+			className='chat__input'
 			type="text"
 			value={this.state.message}
 			onChange={(e)=>this.setState({message:e.target.value})}
