@@ -12,11 +12,11 @@
 	min-height: 700px;
 }
 .chat__messages{
+
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
 	color: white;
-	margin-left: 20px;
 	height: 100%;
 	width: 100%;
 	overflow-y: scroll;
@@ -28,8 +28,7 @@
 }
 
 .chat__input{
-
-	width: 80%;
+	width: 100%;
 	padding-left: 50px;
 	height: 50px;
 	border: none;

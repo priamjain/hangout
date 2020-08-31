@@ -52,7 +52,7 @@ class Chat extends React.Component{
 			<div className='chat__container'>
 			<ChatHeader party={this.state.party} name={this.state.name}></ChatHeader>
 			<div className="chat__messages">
-			{this.state.messages.map((msg,index) => <Message key={index} user={msg.user} text={msg.text}/>)}
+			{this.state.messages.map((msg,index) => <Message key={index} name={this.state.name} user={msg.user} text={msg.text}/>)}
 			</div>
 			<FormControl 
 			className='chat__input'

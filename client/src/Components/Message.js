@@ -1,9 +1,13 @@
 import React from 'react'
 import ReactEmoji from 'react-emoji'
-function Message({text,user}) {
+import './Message.css'
+function Message({text,user,name}) {
+	let ownMessage = user===name;
 	return (
-		<div>
-			<strong><em>{user} </em></strong>: {ReactEmoji.emojify(text)}
+		<div className={ownMessage?'ownMessage__container':null}>
+		<div className={`message ${ownMessage?'ownMessage':'elseMessage'}`}>
+			{ownMessage?null:<strong><em>{user} </em>:</strong>}{ReactEmoji.emojify(text)}
+		</div>
 		</div>
 	)
 }
